@@ -1,0 +1,10 @@
+<h1>Welcome to Flashcard 2.0</h1>
+<h3>Card num from deck name</h3>
+
+<p><%= @round.deck.cards.find(1).question %></p>
+<p>
+  <form action="/deck/#{@round.deck.id}/cards/CARD_ID" method="POST">
+    <input type="text" name="guess" placeholder="What d'you think?"/>
+    <input type="submit" value="Guess!"/>
+  </form>
+</p>
