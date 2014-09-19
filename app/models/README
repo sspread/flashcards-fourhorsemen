@@ -1,0 +1,7 @@
+
+rake generate:model NAME=User
+
+User
+Card
+Round
+Deck
