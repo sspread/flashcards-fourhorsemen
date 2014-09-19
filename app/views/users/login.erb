@@ -1,0 +1,13 @@
+<h1>Please Login</h1>
+<h3>To Flashcards 2.0</h3>
+
+<% if @username.nil? %>
+<% else %>
+	<p>Username: <%= @username %> - Password: <%= @password %> <br> was not correct, please try again.</p>
+<% end %>
+
+<form name="input" action="/users/login" method="POST">
+ 	Username: <input type="text"     name="username"><br>
+ 	Password: <input type="password" name="password"><br><br>
+		      <input type="submit"  value="Login">
+</form>
