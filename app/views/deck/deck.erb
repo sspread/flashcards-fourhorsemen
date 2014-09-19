@@ -1,0 +1,15 @@
+<h1>Welcome to Flashcard 2.0</h1>
+<h3>Choose a deck to begin FlashCards</h3>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Count</th>
+  </tr>
+  <% @decks.each do |deck| %>
+  <tr>
+    <td><a href = "/decks<%= deck.id %>"><%= deck.name %></a></td>
+    <td><%= deck.cards.count %></td>
+  </tr>
+  <% end %>
+</table>

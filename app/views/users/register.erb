@@ -1,0 +1,15 @@
+<h1>Please Register</h1>
+<h3>For Flashcards 2.0</h3>
+
+<% if @errors.nil? %>
+<% else %>
+	<% @errors.each do |error| %>
+    	<p><%= error %></p>
+	<%end%>
+<%end%>	
+
+<form name="input" action="/users/register" method="POST">
+ 	Username: <input type="text"     name="username" value="<%= @username %>"><br>
+ 	Password: <input type="password" name="password"><br><br>
+		      <input type="submit"  value="Register">
+</form>

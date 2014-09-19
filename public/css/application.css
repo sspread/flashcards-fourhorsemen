@@ -3,7 +3,50 @@
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+  background-color: gray;
 }
+
+#content {
+	width: 90px; 
+	height: 390px; 
+	border: 1px solid #999999; 
+	padding: 5px;
+}
+
 th {
   text-align: left;
+}
+
+h1, h2, h3, h4 {
+	font-family: georgia;
+	text-align: center;
+}
+
+form {
+	text-align: center;
+	font-family: georgia;
+}
+
+p {
+	text-align: center;
+	font-family: georgia;
+	border-top: 1px dotted black;
+	padding-top: 10px;
+}
+
+input[type=submit] {
+	margin-bottom: 5px;
+	width: 30%;
+	padding: 15px;
+	border-radius: 5px;
+	border: 1px solid #7ac9b7;
+	background-color: #a4e6db;
+}
+
+.lower-links {
+	text-align: left;
+}
+
+a:hover {
+	color: #05E9FF;
 }
