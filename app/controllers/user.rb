@@ -1,5 +1,17 @@
 # all login/logout/authentication routing
 
+
+before 'user/profile/:id' do
+	unless current_user
+		redirect '/login'
+	end
+end
+
+get 'user/profile' do
+	@user = User.find(session[user_id])
+	erb :"users/profile"
+end
+
 get '/users/register' do
   
 	erb :'users/register'
@@ -8,11 +20,6 @@ end
 get '/users/login' do
 
 	erb :'users/login'
-end
-
-get '/users/profile' do
-
-	erb :'users/profile'
 end
 
 post '/users/register' do
@@ -43,5 +50,4 @@ post '/users/login' do
 		end
 	end
 end
-
 
