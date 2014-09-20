@@ -1,6 +1,7 @@
 <h1>Welcome to Flashcard 2.0</h1>
 <h3>Card <%= session[:card_index]+1 %> from <%= Round.find(session[:round_id]).deck.name %>  </h3>
 
+
 <% if @correct == "right" %>
 <p class = "good_guess">
 	<%else%>
