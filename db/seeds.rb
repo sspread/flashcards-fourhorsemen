@@ -37,11 +37,14 @@ Dir.foreach("db/csv_files") do |x|
 end
 
 ## go through the file list and for each row in a file create a card
+# ActiveRecord::Base.transaction do
 file_list.each_with_index do |file_name, index|
   CSV.foreach("db/csv_files/#{file_name}", :headers => true, :header_converters => :symbol) do |row|
-    Card.create!(question: row[:question], answer: row[:answer], deck_id: index + 1)
+    # Card.create!(question: row[:question], answer: row[:answer], deck_id: index + 1)
+    
   end
 end
+# end
 
 
 ########################## create decks ########################################
