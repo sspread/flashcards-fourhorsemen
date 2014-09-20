@@ -1,9 +1,10 @@
 <h1>Welcome to Flashcard 2.0</h1>
-<h3>Card num from deck name</h3>
+<h3>Card <%= session[:card_index]+1 %> from <%= Round.find(session[:round_id]).deck.name %>  </h3>
 
-<p><%= @round.deck.cards.find(1).question %></p>
+<p><%= Card.find(session[:card_ids_arr][session[:card_index]]).question %></p>
+<p> <%= "#{@guess} is #{@correct}" unless @guess.nil? %> </p>
 <p>
-  <form action="/deck/#{@round.deck.id}/cards/CARD_ID" method="POST">
+  <form action="/decks/cards" method="POST">
     <input type="text" name="guess" placeholder="What d'you think?"/>
     <input type="submit" value="Guess!"/>
   </form>

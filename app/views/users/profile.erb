@@ -1,15 +1,15 @@
 
- <h1>Welcome <%=@user.username%> </h1>
+ <h1>Welcome <%=current_user.username%> </h1>
 
- <form action="">
- <input type="button" value="Play Game">
+ <form action="/decks" method="get">
+ <input type="submit" value="Play Game">
  </form>
 
- <h6>You have played <%@user.rounds.count%> </h6>
+ <p>You have played <%=current_user.rounds.count%> rounds </p>
  <ul>
-    <%@user.rounds.each do |round|%> 
-    	<li><%=round.id%> Score:<%=round.correct_count/(round.correct_count+round.incorrect_count)%>/ </li>
+    <%current_user.rounds.each do |round|%>
+    	<li><%=round.id%> Score:<%=round.correct_count+(round.correct_count+round.incorrect_count)%></li>
     <%end%>
- 
- </ul>   
+
+ </ul>
 
