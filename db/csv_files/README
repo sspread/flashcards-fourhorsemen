@@ -1,0 +1,14 @@
+To Add New Decks to This Program:
+
+1. Create a .csv file
+  Must be in the format of a standard .csv, with 2 columns:
+    header row must be: Question, Answer
+    each additional row must be: Some Kind of Question, The question's answers
+
+    example: (look at current .csv files for more examples)
+    Question, Answer
+    How many states in the United States?, 50
+    What is the capital of California?, Sacramento
+
+  Watch out for special characters- the SQL INSERT does not like them
+  note- might be able to escape special characters...

@@ -37,11 +37,9 @@ end_time = Time.new - start_time
 file_list_clean.each { |file| Deck.create!(name: file) }
 
 
-# ## create some rounds:
-# Round.create!( user_id: 1, deck_id: 1, correct_count: 2, incorrect_count: 1)
-# Round.create!( user_id: 1, deck_id: 2, correct_count: 1, incorrect_count: 2)
-# Round.create!( user_id: 2, deck_id: 1, correct_count: 3, incorrect_count: 0)
-# Round.create!( user_id: 2, deck_id: 2, correct_count: 0, incorrect_count: 3)
-
 ########################## create rounds #######################################
 ################################################################################
+Round.create!( user_id: 1, deck_id: 1, correct_count: 10, incorrect_count: 5)
+Round.create!( user_id: 1, deck_id: 2, correct_count: 10, incorrect_count: 2)
+Round.create!( user_id: 2, deck_id: 1, correct_count: 5, incorrect_count: 10)
+Round.create!( user_id: 2, deck_id: 2, correct_count: 10, incorrect_count: 0)
