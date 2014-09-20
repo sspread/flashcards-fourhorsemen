@@ -1,19 +1,19 @@
 # all login/logout/authentication routing
 
 
-before 'user/profile/:id' do
+before '/users/profile' do
 	unless current_user
 		redirect '/login'
 	end
 end
 
-get 'user/profile' do
-	@user = User.find(session[user_id])
+get '/users/profile' do
+	@user = User.find(session[:user_id])
 	erb :"users/profile"
 end
 
 get '/users/register' do
-  
+
 	erb :'users/register'
 end
 

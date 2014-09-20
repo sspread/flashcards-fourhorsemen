@@ -8,7 +8,7 @@
   </tr>
   <% @decks.each do |deck| %>
   <tr>
-    <td><a href = "/decks<%= deck.id %>"><%= deck.name %></a></td>
+    <td><a href = "/decks/<%= deck.id %>"><%= deck.name %></a></td>
     <td><%= deck.cards.count %></td>
   </tr>
   <% end %>
