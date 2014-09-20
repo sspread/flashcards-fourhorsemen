@@ -9,7 +9,7 @@
 	<%end%>
 <%= "#{@guess} is #{@correct}" unless @guess.nil? %>
 </p>
-<p class = "question"><b><%= Card.find(session[:card_ids_arr][session[:card_index]]).question %></b></p>
+<p class = "question"><b><%= Card.find(@round.deck.card_ids[session[:card_index]]).question %></b></p>
 
 	<form action="/decks/cards" method="POST">
 		<input type="text" name="guess" placeholder="What d'you think?"/>
