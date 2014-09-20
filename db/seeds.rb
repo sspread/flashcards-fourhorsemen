@@ -4,6 +4,7 @@
 ## => test code here...
 # require 'bcrypt'
 require 'faker'
+require 'csv'
 
 # def make_hashed_password
 #   unhashed_password = "password"
@@ -18,37 +19,38 @@ require 'faker'
 
 ########################################################################
 
-## Create some users:
+## Create some users: user1 & user2, both with password as password...
 hashes = ["$2a$10$ejcrEwPlijZ9tisvDrCNOuplKwbf7jnHzacPnrHwaBhdUqngDEweW", "$2a$10$.M8DNYqJPaun9/1A2neDHegPsdO.NpEj7CaxlEjl5o2gGvWFn.OUm"]
 2.times do | count |
-  User.create!(username: Faker::Name.last_name, password_hash: hashes[count])
+  User.create!(username: "user#{count}", password_hash: hashes[count])
 end
 
-## create some cards deck one
-questions1 = ["Who was the first president?", "Who was the second President?", "Who was the third President?"]
-answers1 = ["George Washington", "John Adams", "Thomas Jefferson"]
-3.times do |index|
-  Card.create!(question: questions1[index], answer: answers1[index], deck_id: 1)
+########################## create cards ########################################
+################################################################################
+
+## get a list of file names (with and without the .filetype)
+file_list = Array.new
+file_list_clean = Array.new
+Dir.foreach("db/csv_files") do |x|
+  file_list << File.basename(File.absolute_path(x)) unless File.directory?(x)
+  file_list_clean << File.basename(File.absolute_path(x), ".csv") unless File.directory?(x)
 end
 
-## create some cards deck two
-questions2 = ["Who was the first Vice President?", "Who was the second Vice President?", "Who was the third Vice President?"]
-answers2 = ["John Adams", "Thomas Jefferson", "Aaron Burr"]
-
-3.times do |index|
-  Card.create!(question: questions2[index], answer: answers2[index], deck_id: 2)
+## go through the file list and for each row in a file create a card
+file_list.each_with_index do |file_name, index|
+  CSV.foreach("db/csv_files/#{file_name}", :headers => true, :header_converters => :symbol) do |row|
+    Card.create!(question: row[:question], answer: row[:answer], deck_id: index + 1)
+  end
 end
 
 
-## create some decks:
-deck_names= ["US Presidents", "US Vice Presidents"]
-deck_names.each { |name| 
-  Deck.create!( name: name )
-}
+########################## create decks ########################################
+################################################################################
 
-## create some rounds:
-Round.create!( user_id: 1, deck_id: 1, correct_count: 2, incorrect_count: 1)
-Round.create!( user_id: 1, deck_id: 2, correct_count: 1, incorrect_count: 2)
-Round.create!( user_id: 2, deck_id: 1, correct_count: 3, incorrect_count: 0)
-Round.create!( user_id: 2, deck_id: 2, correct_count: 0, incorrect_count: 3)
+file_list_clean.each { |file| Deck.create!(name: file) }
 
+# ## create some rounds:
+# Round.create!( user_id: 1, deck_id: 1, correct_count: 2, incorrect_count: 1)
+# Round.create!( user_id: 1, deck_id: 2, correct_count: 1, incorrect_count: 2)
+# Round.create!( user_id: 2, deck_id: 1, correct_count: 3, incorrect_count: 0)
+# Round.create!( user_id: 2, deck_id: 2, correct_count: 0, incorrect_count: 3)
