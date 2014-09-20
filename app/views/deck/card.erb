@@ -1,11 +1,18 @@
 <h1>Welcome to Flashcard 2.0</h1>
 <h3>Card <%= session[:card_index]+1 %> from <%= Round.find(session[:round_id]).deck.name %>  </h3>
 
-<p><%= Card.find(session[:card_ids_arr][session[:card_index]]).question %></p>
-<p> <%= "#{@guess} is #{@correct}" unless @guess.nil? %> </p>
-<p>
-  <form action="/decks/cards" method="POST">
-    <input type="text" name="guess" placeholder="What d'you think?"/>
-    <input type="submit" value="Guess!"/>
-  </form>
+
+<% if @correct == "right" %>
+<p class = "good_guess">
+	<%else%>
+<p class = "bad_guess">
+	<%end%>
+<%= "#{@guess} is #{@correct}" unless @guess.nil? %>
 </p>
+<p class = "question"><b><%= Card.find(session[:card_ids_arr][session[:card_index]]).question %></b></p>
+
+	<form action="/decks/cards" method="POST">
+		<input type="text" name="guess" placeholder="What d'you think?"/>
+		<input type="submit" value="Guess!"/>
+	</form>
+	<h4><a href="/users/profile">Quit</a></h4>

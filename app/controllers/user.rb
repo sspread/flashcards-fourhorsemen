@@ -3,7 +3,7 @@
 
 before '/users/profile' do
 	unless current_user
-		redirect '/login'
+		redirect '/'
 	end
 end
 
