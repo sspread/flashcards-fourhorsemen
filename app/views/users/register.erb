@@ -4,7 +4,7 @@
 <% if @errors.nil? %>
 <% else %>
 	<% @errors.each do |error| %>
-    	<p><%= error %></p>
+    	<p><%= error[1].first %></p>
 	<%end%>
 <%end%>	
 

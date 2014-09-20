@@ -1,9 +1,9 @@
 .container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
-  background-color: gray;
+	margin: 20px auto;
+	width: 600px;
+	padding: 0px 20px 20px 20px;
+	border: 1px dotted black;
+	background-color: gray;
 }
 
 #content {
@@ -14,7 +14,7 @@
 }
 
 th {
-  text-align: left;
+	text-align: left;
 }
 
 h1, h2, h3, h4 {
@@ -34,6 +34,8 @@ p {
 	padding-top: 10px;
 }
 
+/*button a, button a:visited {color: black;}*/
+
 input[type=submit] {
 	margin-bottom: 5px;
 	width: 30%;
@@ -49,4 +51,34 @@ input[type=submit] {
 
 a:hover {
 	color: #05E9FF;
+}
+a{
+	text-decoration: none;
+}
+
+table {table-layout: fixed;}
+
+th {
+	text-align: center;
+	background: #000;
+	color: #fff;
+	width: 20%;
+	height: 30px;
+}
+
+td {
+	text-align: center;
+	width: 20%;
+	height: 25px;
+	word-wrap: break-word;
+}
+
+.good_guess {
+	text-shadow: 2px 2px 2px green;
+
+}
+
+.bad_guess {
+	text-shadow: 2px 2px 2px red;
+
 }

@@ -4,12 +4,29 @@
  <form action="/decks" method="get">
  <input type="submit" value="Play Game">
  </form>
+	<h4><a href="/">Logout</a></h4>
+
 
  <p>You have played <%=current_user.rounds.count%> rounds </p>
- <ul>
-    <%current_user.rounds.each do |round|%>
-    	<li><%=round.id%> Score:<%=round.correct_count+(round.correct_count+round.incorrect_count)%></li>
+ <table>
+    	<tr>
+    		<th>Round</th>
+    		<th>Deck</th>
+    		<th>Correct</th>
+    		<th>Answered</th>
+    		<th>Percent</th>
+    	</tr>
+    <%current_user.rounds.each.with_index do |round, index|%>
+    	<tr>
+    		<td><%=index+1%></td>
+    		<td><%=round.deck.name%></td>
+    		<td><%=round.correct_count%></td>
+    		<td><%=round.correct_count+round.incorrect_count%></td>
+    	 	<td>
+    	 		<%= round.correct_count+round.incorrect_count > 0 ? "#{(round.correct_count.to_f/(round.correct_count+round.incorrect_count).to_f*100).floor}%" : 0 %>
+    	 	</td>
+    	</tr>
     <%end%>
 
- </ul>
+ </table>
 
